@@ -3,3 +3,11 @@
 ## v1.0.0
 
 * Original build
+
+## v1.1.0
+
+* Original build - completed
+
+## v1.1.1
+
+* Bug fix - missing commas
