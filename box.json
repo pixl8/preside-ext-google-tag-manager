@@ -2,20 +2,23 @@
     "name":"PresideCMS Extension: Google Tag Manager",
     "type":"preside-extensions",
     "version":"VERSION_NUMBER",
+    "location":"https://s3.eu-west-2.amazonaws.com/pixl8-public-packages/google-tag-manager/DOWNLOAD_LOCATION",
+    "private":false,
     "author":"Pixl8 Interactive",
     "directory":"application/extensions",
-    "homepage":"https://gitlab.pixl8.london/pixl8/extensions/preside-ext-google-tag-manager",
-    "documentation":"https://gitlab.pixl8.london/pixl8/extensions/preside-ext-google-tag-manager",
+    "homepage":"https://github.com/pixl8/preside-ext-google-tag-manager",
+    "documentation":"https://github.com/pixl8/preside-ext-google-tag-manager",
     "repository":{
         "type":"git",
-        "URL":"https://gitlab.pixl8.london/pixl8/extensions/preside-ext-google-tag-manager"
+        "URL":"https://github.com/pixl8/preside-ext-google-tag-manager"
     },
     "slug":"preside-ext-google-tag-manager",
-    "projectURL":"https://gitlab.pixl8.london/pixl8/extensions/preside-ext-google-tag-manager",
+    "projectURL":"https://github.com/pixl8/preside-ext-google-tag-manager",
     "ignore":[
         ".git/*",
         ".gitignore",
         ".gitlab-ci.yml",
-        ".twgit_features_subject"
+        ".twgit_features_subject",
+        ".travis.yml"
     ]
 }
