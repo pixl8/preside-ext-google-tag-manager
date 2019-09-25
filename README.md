@@ -8,7 +8,7 @@ This extension is for installing configuration for adding Google Tag Manager (GT
 From a commandline at the root of your application:
 
 ```
-box install pixl8:preside-ext-google-tag-manager
+box install preside-ext-google-tag-manager
 ```
 
 ## Configuration
