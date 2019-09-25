@@ -11,3 +11,7 @@
 ## v1.1.1
 
 * Bug fix - missing commas
+
+## v1.1.2
+
+• Publishing to Forgebox, opensource
