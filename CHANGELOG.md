@@ -19,3 +19,7 @@
 ## v1.1.3
 
 • Relocating repo to Pixl8 GitHub account
+
+## v1.1.4
+
+• Completing move to GitHub, including ensuring the build script is executable and the ChangeLog is recognised by ForgeBox
