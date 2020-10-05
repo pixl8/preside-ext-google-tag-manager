@@ -20,7 +20,7 @@ component extends="coldbox.system.Interceptor" {
 					interceptData.renderedLayout = ( interceptData.renderedLayout ?: "" ).reReplaceNoCase( "<head(.*?)>", "<head\1>#chr(10)##gtmRenderedHead#" );
 				}
 				if ( Len( gtmRenderedBody ) ) {
-					interceptData.renderedLayout = ( interceptData.renderedLayout ?: "" ).reReplaceNoCase( "<body(.*?)>", "<body\1>#chr(10)##gtmRenderedBody#" );
+					interceptData.renderedLayout = ( interceptData.renderedLayout ?: "" ).reReplaceNoCase( "<body(.*?(<!--.+-->.*?)?)>", "<body\1>#chr(10)##gtmRenderedBody#" );
 				}
 			}
 		}
