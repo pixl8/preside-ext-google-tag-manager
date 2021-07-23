@@ -2,8 +2,8 @@
 <form i18nBaseUri="system-config.google-tag-manager:">
 	<tab>
 		<fieldset>
-			<field name="tag_manager_head_snippet" type="textarea" maxlength="1024" required="false" />
-			<field name="tag_manager_body_snippet" type="textarea" maxlength="512"  required="false" />
+			<field name="tag_manager_head_snippet" type="textarea" maxlength="4096" required="false" />
+			<field name="tag_manager_body_snippet" type="textarea" maxlength="2048" required="false" />
 		</fieldset>
 	</tab>
 </form>
