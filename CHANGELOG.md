@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.8
+
+* Migrate build to GitHub Actions
+
 ## v1.1.7
 
 * Increasing the text limit on both form fields to allow for bigger scripts
