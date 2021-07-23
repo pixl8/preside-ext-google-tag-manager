@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.7
+
+* Increasing the text limit on both form fields to allow for bigger scripts
+
 ## v1.1.6
 
 * Allow for the possibility of one or more comment tags inside the opening `<body>` tag
