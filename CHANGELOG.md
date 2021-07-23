@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.9
+
+* Remove asset building from build script
+
 ## v1.1.8
 
 * Migrate build to GitHub Actions
