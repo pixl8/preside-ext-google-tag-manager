@@ -25,6 +25,14 @@ To customize the layouts, set the `settings.googleTagManager.layouts` variable i
 settings.googleTagManager.layouts = [ "main", "newsletter" ]; // default is [ "main" ]
 ```
 
+### New helper methods
+There are two new helper methods that can be used for pushing and exposing application data to the `DataLayer`
+
+* `publishDataForAnalytics` - used to push data into the DataLayer
+* `getPublishedDataForAnalytics` - used by the extension to construct the `DataLayer` output
+** The outputting of the `DataLayer` JSON object is taken care of you automatically by the extension
+
+
 ### Note
 If you're using the Google Analytics extension, please ensure this is removed or the configuration for the tracking ID is removed to help prevent double tags/events being fired.
 

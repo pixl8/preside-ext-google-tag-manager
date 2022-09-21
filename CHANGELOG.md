@@ -1,8 +1,8 @@
 # Changelog
 
-## v1.x.x
+## v1.1.11
 
-* Add helper functions publishDataForAnalytics() and getPublishedDataForAnalytics()
+* Add helper functions `publishDataForAnalytics()` and `getPublishedDataForAnalytics()`
 
 
 ## v1.1.10
