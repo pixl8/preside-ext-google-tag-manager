@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.x.x
+
+* Add helper functions publishDataForAnalytics() and getPublishedDataForAnalytics()
+
+
 ## v1.1.10
 
 * Output head tags directly after <title></title> element
