@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.1.11
+
+* Add helper functions `publishDataForAnalytics()` and `getPublishedDataForAnalytics()`
+
+
+## v1.1.10
+
+* Output head tags directly after <title></title> element
+
 ## v1.1.9
 
 * Remove asset building from build script
