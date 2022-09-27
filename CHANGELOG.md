@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.14 & v1.1.15
+
+* Refactoring to ensure the dataLayer is always in front of the GTM script + updating the CHANEGLOG file
+
 ## v1.1.13
 
 * Bug Fix: Wrong view path set for the dataLayer data template
