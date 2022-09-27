@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.13
+
+* Bug Fix: Wrong view path set for the dataLayer data template
+
 ## v1.1.12
 
 * Updating the interceptor to retrieve and output the DataLayer data, if any exists
