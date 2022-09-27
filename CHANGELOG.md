@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.1.16
+
+* Adding dataLayer output even if the scripts are not loaded via this extension and possibly via another method built into the site
+** This could be within the project code directly or via another extension e.g. Civic Cookie Control
+
 ## v1.1.14 & v1.1.15
 
 * Refactoring to ensure the dataLayer is always in front of the GTM script + updating the CHANEGLOG file
