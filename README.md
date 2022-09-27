@@ -30,7 +30,7 @@ There are two new helper methods that can be used for pushing and exposing appli
 
 * `publishDataForAnalytics` - used to push data into the DataLayer
 * `getPublishedDataForAnalytics` - used by the extension to construct the `DataLayer` output
-** The outputting of the `DataLayer` JSON object is taken care of you automatically by the extension
+** The outputting of the `DataLayer` JSON object is taken care of you automatically by the extension, if anything is set in the DataLayer using the `publishDataForAnalytics` method
 
 
 ### Note

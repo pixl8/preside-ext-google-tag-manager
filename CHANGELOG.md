@@ -1,9 +1,12 @@
 # Changelog
 
+## v1.1.12
+
+* Updating the interceptor to retrieve and output the DataLayer data, if any exists
+
 ## v1.1.11
 
 * Add helper functions `publishDataForAnalytics()` and `getPublishedDataForAnalytics()`
-
 
 ## v1.1.10
 
