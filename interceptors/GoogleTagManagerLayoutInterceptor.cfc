@@ -12,6 +12,14 @@ component extends="coldbox.system.Interceptor" {
 			var gtmHeadSnippet = Trim( systemConfigurationService.getSetting( category="google-tag-manager", setting="tag_manager_head_snippet" ) );
 			var gtmBodySnippet = Trim( systemConfigurationService.getSetting( category="google-tag-manager", setting="tag_manager_body_snippet" ) );
 
+			// Add the DataLayer data if there is something to output in the request
+			var gtmDataLayerData = getPublishedDataForAnalytics();
+
+			if( StructCount( gtmDataLayerData ) ) {
+				var gtmRenderedDataLayerData = Trim( renderView( view="/general/_googleTagManagerDataLayerData", args={ gtmDataLayerData=gtmDataLayerData, layout=layout, cache=true } ) );
+				interceptData.renderedLayout = reReplaceNoCase( interceptData.renderedLayout ?: "", "<html(.*?(<!--.+-->.*?)?)>", "<html\1>#chr(10)##gtmRenderedDataLayerData#" );
+			}
+
 			if ( Len( gtmHeadSnippet ) && Len( gtmBodySnippet ) ) {
 				var gtmRenderedHead = Trim( renderView( view="/general/_googleTagManagerHeadSnippet", args={ gtmHeadSnippet=gtmHeadSnippet, layout=layout, cache=true } ) );
 				var gtmRenderedBody = Trim( renderView( view="/general/_googleTagManagerBodySnippet", args={ gtmBodySnippet=gtmBodySnippet, layout=layout, cache=true } ) );
