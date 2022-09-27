@@ -38,6 +38,14 @@ component extends="coldbox.system.Interceptor" {
 				if ( Len( gtmRenderedBody ) ) {
 					interceptData.renderedLayout = reReplaceNoCase( interceptData.renderedLayout ?: "", "<body(.*?(<!--.+-->.*?)?)>", "<body\1>#chr(10)##gtmRenderedBody#" );
 				}
+			} else {
+				// Add the DataLayer data if there is something to output in the request but the GTM script is NOT installed via this extension
+				var gtmDataLayerData = getPublishedDataForAnalytics();
+
+				if( StructCount( gtmDataLayerData ) ) {
+					var gtmRenderedDataLayerData = Trim( renderView( view="/dataLayer/_googleTagManagerDataLayerData", args={ gtmDataLayerData=gtmDataLayerData, layout=layout, cache=false } ) );
+					interceptData.renderedLayout = reReplaceNoCase( interceptData.renderedLayout ?: "", "<head(.*?)>", "<head\1>#chr(10)##gtmRenderedDataLayerData#" );
+				}
 			}
 		}
 	}
