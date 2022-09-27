@@ -16,7 +16,7 @@ component extends="coldbox.system.Interceptor" {
 			var gtmDataLayerData = getPublishedDataForAnalytics();
 
 			if( StructCount( gtmDataLayerData ) ) {
-				var gtmRenderedDataLayerData = Trim( renderView( view="/general/_googleTagManagerDataLayerData", args={ gtmDataLayerData=gtmDataLayerData, layout=layout, cache=true } ) );
+				var gtmRenderedDataLayerData = Trim( renderView( view="/dataLayer/_googleTagManagerDataLayerData", args={ gtmDataLayerData=gtmDataLayerData, layout=layout, cache=true } ) );
 				interceptData.renderedLayout = reReplaceNoCase( interceptData.renderedLayout ?: "", "<html(.*?(<!--.+-->.*?)?)>", "<html\1>#chr(10)##gtmRenderedDataLayerData#" );
 			}
 
