@@ -12,14 +12,6 @@ component extends="coldbox.system.Interceptor" {
 			var gtmHeadSnippet = Trim( systemConfigurationService.getSetting( category="google-tag-manager", setting="tag_manager_head_snippet" ) );
 			var gtmBodySnippet = Trim( systemConfigurationService.getSetting( category="google-tag-manager", setting="tag_manager_body_snippet" ) );
 
-			// Add the DataLayer data if there is something to output in the request
-			var gtmDataLayerData = getPublishedDataForAnalytics();
-
-			if( StructCount( gtmDataLayerData ) ) {
-				var gtmRenderedDataLayerData = Trim( renderView( view="/dataLayer/_googleTagManagerDataLayerData", args={ gtmDataLayerData=gtmDataLayerData, layout=layout, cache=true } ) );
-				interceptData.renderedLayout = reReplaceNoCase( interceptData.renderedLayout ?: "", "<html(.*?(<!--.+-->.*?)?)>", "<html\1>#chr(10)##gtmRenderedDataLayerData#" );
-			}
-
 			if ( Len( gtmHeadSnippet ) && Len( gtmBodySnippet ) ) {
 				var gtmRenderedHead = Trim( renderView( view="/general/_googleTagManagerHeadSnippet", args={ gtmHeadSnippet=gtmHeadSnippet, layout=layout, cache=true } ) );
 				var gtmRenderedBody = Trim( renderView( view="/general/_googleTagManagerBodySnippet", args={ gtmBodySnippet=gtmBodySnippet, layout=layout, cache=true } ) );
@@ -27,6 +19,14 @@ component extends="coldbox.system.Interceptor" {
 				if ( Len( gtmRenderedHead ) ) {
 					var renderedLayout = interceptData.renderedLayout ?: "";
 					var headHtml       = reFindNoCase( "<head[^>]*>(.*?)</head>", renderedLayout, 1, true, "one" )[ "match" ][1] ?: "";
+
+					// Add the DataLayer data if there is something to output in the request
+					var gtmDataLayerData = getPublishedDataForAnalytics();
+
+					if( StructCount( gtmDataLayerData ) ) {
+						var gtmRenderedDataLayerData = Trim( renderView( view="/dataLayer/_googleTagManagerDataLayerData", args={ gtmDataLayerData=gtmDataLayerData, layout=layout, cache=false } ) );
+						gtmRenderedHead = gtmRenderedDataLayerData & chr(10) & gtmRenderedHead;
+					}
 
 					if ( !isEmptyString( headHtml ) && reFindNoCase( "<title[^>]*>(.*?)</title>", headHtml ) ) {
 						headHtml = reReplaceNoCase( headHtml, "</title>", "</title>#chr(10)##gtmRenderedHead#" );
