@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.17
+
+* Bug Fix: Updating the form definition input type attribute to be `control` and not `type`
+
 ## v1.1.16
 
 * Adding dataLayer output even if the scripts are not loaded via this extension and possibly via another method built into the site
