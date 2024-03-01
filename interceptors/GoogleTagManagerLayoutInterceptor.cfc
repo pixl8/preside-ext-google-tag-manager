@@ -6,11 +6,7 @@ component extends="coldbox.system.Interceptor" {
 	public void function configure() {}
 
 	public void function postRenderDelayedViewlets( event, interceptData={} ) {
-		var layout = Trim( Event.getCurrentLayout() ?: "" );
-		// Extract just the layout name without extension, if it has the extension
-		if( Len( layout ) && findNoCase( ".", layout ) ) {
-			layout = ListToArray( layout, "." )[1];
-		}
+		var layout = ListFirst( event.getCurrentLayout(), "." );
 
 		if ( Len( layout ) && ArrayFindNoCase( layoutsToApply, layout ) ) {
 			var gtmHeadSnippet = Trim( systemConfigurationService.getSetting( category="google-tag-manager", setting="tag_manager_head_snippet" ) );
