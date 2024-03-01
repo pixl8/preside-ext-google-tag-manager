@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.2.0
+
+* Refactoring: Refactoring to use the new `postRenderDelayedViewlets` interception point due to the `postLayoutRender` to accomodate for delayedViewlets and caching too
+
+
 ## v1.1.17
 
 * Bug Fix: Updating the form definition input type attribute to be `control` and not `type`
