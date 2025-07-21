@@ -13,8 +13,8 @@ component extends="coldbox.system.Interceptor" {
 			var gtmBodySnippet = Trim( systemConfigurationService.getSetting( category="google-tag-manager", setting="tag_manager_body_snippet" ) );
 
 			if ( Len( gtmHeadSnippet ) && Len( gtmBodySnippet ) ) {
-				var gtmRenderedHead = Trim( renderView( view="/general/_googleTagManagerHeadSnippet", args={ gtmHeadSnippet=gtmHeadSnippet, cache=true } ) );
-				var gtmRenderedBody = Trim( renderView( view="/general/_googleTagManagerBodySnippet", args={ gtmBodySnippet=gtmBodySnippet, cache=true } ) );
+				var gtmRenderedHead = Trim( renderView( view="/general/_googleTagManagerHeadSnippet", args={ gtmHeadSnippet=_addNonceToInlineScripts( gtmHeadSnippet, event ), cache=true } ) );
+				var gtmRenderedBody = Trim( renderView( view="/general/_googleTagManagerBodySnippet", args={ gtmBodySnippet=_addNonceToInlineScripts( gtmBodySnippet, event ), cache=true } ) );
 
 				if ( Len( gtmRenderedHead ) ) {
 					var renderedLayout = interceptData.renderedContent ?: "";
@@ -48,6 +48,10 @@ component extends="coldbox.system.Interceptor" {
 				}
 			}
 		}
+	}
+
+	private string function _addNonceToInlineScripts( required string snippet, required any event ) {
+		return ReReplaceNoCase( arguments.snippet, "<script(.*?)>", '<script\1 nonce="#arguments.event?.getRequestNonce()#">', "all" );
 	}
 
 }
