@@ -39,10 +39,10 @@ component extends="coldbox.system.Interceptor" {
 					}
 				}
 				if ( Len( gtmRenderedBody ) ) {
+					gtmRenderedBody = _addNonceToInlineScriptsAndRegisterTrustedSources( gtmRenderedBody, event );
 					interceptData.renderedContent = reReplaceNoCase( interceptData.renderedContent ?: "", "<body(.*?(<!--.+-->.*?)?)>", "<body\1>#chr(10)##gtmRenderedBody#" );
 				}
 			} else {
-				gtmRenderedBody = _addNonceToInlineScriptsAndRegisterTrustedSources( gtmRenderedBody, event );
 				// Add the DataLayer data if there is something to output in the request but the GTM script is NOT installed via this extension
 				var gtmDataLayerData = getPublishedDataForAnalytics();
 
