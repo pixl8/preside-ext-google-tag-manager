@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.1.18
+
+* [GTM-6](https://projects.pixl8.london/browse/GTM-6) - Support CSP nonces
+
 ## v1.1.17
 
 * Bug Fix: Updating the form definition input type attribute to be `control` and not `type`
