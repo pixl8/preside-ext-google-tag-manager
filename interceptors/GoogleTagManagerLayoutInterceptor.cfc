@@ -17,7 +17,9 @@ component extends="coldbox.system.Interceptor" {
 				var gtmRenderedBody = Trim( renderView( view="/general/_googleTagManagerBodySnippet", args={ gtmBodySnippet=gtmBodySnippet, layout=layout, cache=true } ) );
 
 				if ( Len( gtmRenderedHead ) ) {
-					var renderedLayout = interceptData.renderedLayout ?: "";
+					gtmRenderedHead = _addNonceToInlineScriptsAndRegisterTrustedSources( gtmRenderedHead, event );
+
+					var renderedLayout = interceptData.renderedContent ?: "";
 					var headHtml       = reFindNoCase( "<head[^>]*>(.*?)</head>", renderedLayout, 1, true, "one" )[ "match" ][1] ?: "";
 
 					// Add the DataLayer data if there is something to output in the request
@@ -36,6 +38,7 @@ component extends="coldbox.system.Interceptor" {
 					}
 				}
 				if ( Len( gtmRenderedBody ) ) {
+					gtmRenderedBody = _addNonceToInlineScriptsAndRegisterTrustedSources( gtmRenderedBody, event );
 					interceptData.renderedLayout = reReplaceNoCase( interceptData.renderedLayout ?: "", "<body(.*?(<!--.+-->.*?)?)>", "<body\1>#chr(10)##gtmRenderedBody#" );
 				}
 			} else {
@@ -48,6 +51,21 @@ component extends="coldbox.system.Interceptor" {
 				}
 			}
 		}
+	}
+
+	private string function _addNonceToInlineScriptsAndRegisterTrustedSources( required string snippet, required any event ) {
+		if ( !StructKeyExists( arguments.event, "addToContentSecurityPolicy" ) ) { // not up-to-date preside version, for example
+			return arguments.snippet;
+		}
+
+		var externalScripts = ReFind( '<script.*?src="((https?://|//)[^"/]+)', arguments.snippet, 1, true, "all" );
+
+		for( var match in externalScripts ) {
+			if ( Len( Trim( match.match[ 2 ] ?: "" ) ) ) {
+				arguments.event.addToContentSecurityPolicy( "script-src", match.match[ 2 ] );
+			}
+		}
+		return ReReplaceNoCase( arguments.snippet, "<script(.*?)>", '<script\1 nonce="#arguments.event.getRequestNonce()#">', "all" );
 	}
 
 }
