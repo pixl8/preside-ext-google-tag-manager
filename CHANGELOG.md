@@ -1,8 +1,8 @@
 # Changelog
 
-## v1.2.1
+## v1.2.2
 
-* [GTM-6](https://projects.pixl8.london/browse/GTM-6) - Support CSP nonces
+* Support CSP nonces changes for Preside
 
 ## v1.2.0
 
