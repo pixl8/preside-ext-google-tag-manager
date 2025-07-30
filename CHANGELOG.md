@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.2.1
+
+* [GTM-6](https://projects.pixl8.london/browse/GTM-6) - Support CSP nonces
+
 ## v1.2.0
 
 * Refactoring: Refactoring to use the new `postRenderDelayedViewlets` interception point due to the `postLayoutRender` to accomodate for delayedViewlets and caching too
