@@ -18,6 +18,8 @@ component extends="coldbox.system.Interceptor" {
 
 
 				if ( Len( gtmRenderedHead ) ) {
+					gtmRenderedHead = _addNonceToInlineScriptsAndRegisterTrustedSources( gtmRenderedHead, event );
+
 					var renderedLayout = interceptData.renderedContent ?: "";
 					var headHtml       = reFindNoCase( "<head[^>]*>(.*?)</head>", renderedLayout, 1, true, "one" )[ "match" ][1] ?: "";
 
@@ -40,6 +42,7 @@ component extends="coldbox.system.Interceptor" {
 					interceptData.renderedContent = reReplaceNoCase( interceptData.renderedContent ?: "", "<body(.*?(<!--.+-->.*?)?)>", "<body\1>#chr(10)##gtmRenderedBody#" );
 				}
 			} else {
+				gtmRenderedBody = _addNonceToInlineScriptsAndRegisterTrustedSources( gtmRenderedBody, event );
 				// Add the DataLayer data if there is something to output in the request but the GTM script is NOT installed via this extension
 				var gtmDataLayerData = getPublishedDataForAnalytics();
 
