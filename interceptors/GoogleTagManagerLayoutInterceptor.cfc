@@ -13,8 +13,8 @@ component extends="coldbox.system.Interceptor" {
 			var gtmBodySnippet = Trim( systemConfigurationService.getSetting( category="google-tag-manager", setting="tag_manager_body_snippet" ) );
 
 			if ( Len( gtmHeadSnippet ) && Len( gtmBodySnippet ) ) {
-				var gtmRenderedHead = Trim( renderView( view="/general/_googleTagManagerHeadSnippet", args={ gtmHeadSnippet=_addNonceToInlineScriptsAndRegisterTrustedSources( gtmHeadSnippet, event ), cache=true } ) );
-				var gtmRenderedBody = Trim( renderView( view="/general/_googleTagManagerBodySnippet", args={ gtmBodySnippet=_addNonceToInlineScriptsAndRegisterTrustedSources( gtmBodySnippet, event ), cache=true } ) );
+				var gtmRenderedHead = Trim( renderView( view="/general/_googleTagManagerHeadSnippet", args={ gtmHeadSnippet=gtmHeadSnippet, cache=true } ) );
+				var gtmRenderedBody = Trim( renderView( view="/general/_googleTagManagerBodySnippet", args={ gtmBodySnippet=gtmBodySnippet, cache=true } ) );
 
 
 				if ( Len( gtmRenderedHead ) ) {
