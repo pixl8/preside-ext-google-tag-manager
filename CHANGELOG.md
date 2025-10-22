@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.2.3
+
+* Apply translation manager CI action
+
 ## v1.2.2
 
 * Support CSP nonces changes for Preside
